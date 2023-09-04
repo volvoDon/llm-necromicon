@@ -30,7 +30,7 @@ class LLMTolkien():
             mlm: bool,
         ) -> None:
         tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-        model = AutoModelForCausalLM.from_pretrained(self.model_name, device_map="auto", load_in_8bit=True)
+        model = AutoModelForCausalLM.from_pretrained(self.model_name, device_map="auto", load_in_8bit=False)
         model = prepare_model(model)
         model = get_peft_model(model, LoraConfig(**lora_config))
         LOGGER.info(f"Model trainable parameters:\n {print_trainable_parameters(model)}")
@@ -55,7 +55,7 @@ class LLMTolkien():
     def generate(self, prompt: str, hf_repo: str, max_new_tokens: int, temperature: float, do_sample: bool) -> None:
         # Import the model
         config = PeftConfig.from_pretrained(hf_repo)
-        model = AutoModelForCausalLM.from_pretrained(config.base_model_name_or_path, return_dict=True, load_in_8bit=True, device_map='auto')
+        model = AutoModelForCausalLM.from_pretrained(config.base_model_name_or_path, return_dict=True, load_in_8bit=False, device_map='auto')
         tokenizer = AutoTokenizer.from_pretrained(config.base_model_name_or_path)
         # Load the Lora model
         self.model = PeftModel.from_pretrained(model, hf_repo)
