@@ -39,12 +39,12 @@ warmup_steps = 100
 num_train_epochs=3
 weight_decay=0.1
 learning_rate = 2e-4 
-fp16 = False
+fp16 = True
 logging_steps = 1
 overwrite_output_dir = True
 evaluation_strategy = "no"
 save_strategy = "no"
-push_to_hub = False
+push_to_hub = True
 
 ## Data collator
 mlm =False

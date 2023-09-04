@@ -34,9 +34,9 @@ class LLMTolkien():
         model = prepare_model(model)
         model = get_peft_model(model, LoraConfig(**lora_config))
         LOGGER.info(f"Model trainable parameters:\n {print_trainable_parameters(model)}")
-        dataset = load_dataset('volvoDon/necronomicon')
+        dataset = load_dataset(hf_repo)
         LOGGER.info(f"Train dataset downloaded:\n {dataset['train']}")
-        #LOGGER.info(f"Number of tokens for the training: {dataset['train'].num_rows*len(dataset['train']['input_ids'][0])}")
+        LOGGER.info(f"Number of tokens for the training: {dataset['train'].num_rows*len(dataset['train']['input_ids'][0])}")
         trainer = Trainer(
             model=model,
             train_dataset=dataset['train'],
