@@ -16,6 +16,7 @@ min_length = 100
 
 # HF repo
 hf_repo = "volvoDon/mr-golem"
+data_repo = "volvoDon/necronomicon"
 
 # Dataset
 context_length = 2048
