@@ -15,7 +15,7 @@ extraction_path = REPO_DIR / "llm/data/extracted_text.jsonl"
 min_length = 100
 
 # HF repo
-hf_repo = "volvoDon/mr-golem"
+hf_repo = "volvoDon/big-golem"
 data_repo = "volvoDon/necronomicon"
 
 # Dataset
